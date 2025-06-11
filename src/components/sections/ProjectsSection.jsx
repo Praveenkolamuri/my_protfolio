@@ -25,7 +25,7 @@ const projects = [
     description: "A Jetson Nano based secure file storage system with IDS and MariaDB integration for security.",
     projectIcon: ShieldCheck,
     technologies: ["Jetson Nano", "Linux", "IDS", "MariaDB"],
-    image: "images/jetson nano prj.jpg",
+    image: "images/jetson_nano_prj.jpg",
     link: "https://www.taylorfrancis.com/chapters/edit/10.1201/9781003641537-13/secure-private-cloud-storage-sharing-services-jetson-orin-nano-srinivasarao-leelavathy-gedela-triveni-kolamuri-sai-praveen-subrhamanya-karthik-sontyana-jagan",
     details: [
       "Implemented IDS for threat monitoring",
@@ -40,7 +40,7 @@ const projects = [
     description: "Built a responsive and stylish Netflix-like interface. Implemented features similar to real streaming platforms for improved UX.",
     projectIcon: Paintbrush,
     technologies: ["HTML", "CSS", "Responsive Design"],
-    image: "images/netflex.jpg",
+    image: "images/netflix.jpg",
     link: "https://github.com/Praveenkolamuri/Netflix-clone-.git",
     details: [
       "Recreated the Netflix UI using HTML and CSS.",
