@@ -10,8 +10,8 @@ const HeroSection = ({ data }) => {
 
   const handleDownloadResume = () => {
     const link = document.createElement('a');
-    link.href = 'Praveen_Resume.pdf';
-    link.download = 'Praveen_Resume.pdf';
+    link.href = 'Praveen_cv.pdf';
+    link.download = 'Praveen_cv.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -89,7 +89,7 @@ const HeroSection = ({ data }) => {
 
               <Button 
                 variant="outline"
-                onClick={() => window.open('/Praveen_Resume.pdf', '_blank')}
+                onClick={() => window.open('/Praveen_cv.pdf', '_blank')}
                 className="border-purple-500 text-purple-400 hover:bg-purple-500/10 px-8 py-3 rounded-full"
               >
                 📄 View Resume
