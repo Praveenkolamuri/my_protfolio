@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
@@ -6,10 +6,11 @@ import { Download, Linkedin } from 'lucide-react';
 
 const HeroSection = ({ data }) => {
   const { name, title, subtitle, imageUrl } = data;
+  const [isImageLoaded, setImageLoaded] = useState(false);
 
   const handleDownloadResume = () => {
     const link = document.createElement('a');
-    link.href = 'Praveen_Resume.pdf'; // Replace with your actual resume filename
+    link.href = 'Praveen_Resume.pdf';
     link.download = 'Praveen_Resume.pdf';
     document.body.appendChild(link);
     link.click();
@@ -59,10 +60,7 @@ const HeroSection = ({ data }) => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-5xl lg:text-7xl font-bold mb-6"
             >
-              Hi, I'm{' '}
-              <span className="gradient-text">
-                {name}
-              </span>
+              Hi, I'm <span className="gradient-text">{name}</span>
             </motion.h1>
             
             <motion.div
@@ -76,37 +74,36 @@ const HeroSection = ({ data }) => {
             </motion.div>
             
             <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.8, duration: 0.6 }}
-  className="flex flex-wrap gap-4 justify-center lg:justify-start"
->
-  <Button 
-    onClick={handleDownloadResume}
-    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full cyber-glow"
-  >
-    <Download className="mr-2 h-5 w-5" />
-    Download Resume
-  </Button>
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              className="flex flex-wrap gap-4 justify-center lg:justify-start"
+            >
+              <Button 
+                onClick={handleDownloadResume}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full cyber-glow"
+              >
+                <Download className="mr-2 h-5 w-5" />
+                Download Resume
+              </Button>
 
-  <Button 
-    variant="outline"
-    onClick={() => window.open('/Praveen_Resume.pdf', '_blank')}
-    className="border-purple-500 text-purple-400 hover:bg-purple-500/10 px-8 py-3 rounded-full"
-  >
-    📄 View Resume
-  </Button>
+              <Button 
+                variant="outline"
+                onClick={() => window.open('/Praveen_Resume.pdf', '_blank')}
+                className="border-purple-500 text-purple-400 hover:bg-purple-500/10 px-8 py-3 rounded-full"
+              >
+                📄 View Resume
+              </Button>
 
-  <Button 
-    variant="outline" 
-    onClick={() => handleContactClick('LinkedIn')}
-    className="border-blue-500 text-blue-400 hover:bg-blue-500/10 px-8 py-3 rounded-full"
-  >
-    <Linkedin className="mr-2 h-5 w-5" />
-    Connect on LinkedIn
-  </Button>
-</motion.div>
-
+              <Button 
+                variant="outline" 
+                onClick={() => handleContactClick('LinkedIn')}
+                className="border-blue-500 text-blue-400 hover:bg-blue-500/10 px-8 py-3 rounded-full"
+              >
+                <Linkedin className="mr-2 h-5 w-5" />
+                Connect on LinkedIn
+              </Button>
+            </motion.div>
           </motion.div>
           
           <motion.div
@@ -117,10 +114,16 @@ const HeroSection = ({ data }) => {
           >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+
+              {!isImageLoaded && (
+                <div className="absolute inset-0 w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gray-700 animate-pulse z-0" />
+              )}
+
               <img 
                 src={imageUrl}
                 alt={`${name} - Professional headshot`}
-                className="relative w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-full border-4 border-blue-500/30 floating"
+                onLoad={() => setImageLoaded(true)}
+                className={`relative w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-full border-4 border-blue-500/30 floating transition-opacity duration-700 ease-in-out ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
               />
             </div>
           </motion.div>
