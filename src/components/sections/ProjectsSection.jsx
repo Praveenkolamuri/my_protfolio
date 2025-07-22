@@ -40,7 +40,7 @@ const projects = [
     description: "Heartbeat is a smart, responsive healthcare web app for doctor appointments, lab tests, pharmacy, insurance, and more — all in one place.",
     projectIcon: HeartPulse,
     technologies: ["React", "Tailwind CSS", "TypeScript", "Vite", "Shadcn/ui", "Supabase"],
-    image: "public/images/hospital.jpg",
+    image: "/images/hospital.jpg",
     link: "https://github.com/Praveenkolamuri/Hospital-website.git",
     demo: "https://heart-beat1221.netlify.app/",
     details: [
