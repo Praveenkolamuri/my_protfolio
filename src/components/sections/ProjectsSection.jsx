@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, CheckCircle, Paintbrush, MonitorPlay, ShieldCheck } from 'lucide-react';
+import { ExternalLink, Github, CheckCircle, Paintbrush, MonitorPlay, ShieldCheck, HeartPulse } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const projectCardVariants = {
@@ -34,6 +34,22 @@ const projects = [
       "Ensured access control and encryption"
     ],
     category: "Security"
+  },
+  {
+    title: "Heart-Beat: Multipurpose Hospital Website",
+    description: "Heartbeat is a smart, responsive healthcare web app for doctor appointments, lab tests, pharmacy, insurance, and more — all in one place.",
+    projectIcon: HeartPulse,
+    technologies: ["React", "Tailwind CSS", "TypeScript", "Vite", "Shadcn/ui", "Supabase"],
+    image: "public/images/hospital.jpg",
+    link: "https://github.com/Praveenkolamuri/Hospital-website.git",
+    demo: "https://heart-beat1221.netlify.app/",
+    details: [
+      "Built a responsive multi-page hospital platform with React + Tailwind",
+      "Implemented doctor booking, pharmacy, lab test, and insurance modules",
+      "Integrated Supabase for authentication and data handling",
+      "Designed clean UI with Shadcn and Lucide icons for modern UX"
+    ],
+    category: "Web Application"
   },
   {
     title: "Netflix Clone",
@@ -194,7 +210,7 @@ const ProjectsSection = () => {
                           </div>
                         </div>
 
-                        <div className="mt-auto pt-4 border-t border-border/50">
+                        <div className="mt-auto pt-4 border-t border-border/50 grid gap-2">
                           {project.title === "Secure Cloud Storage" ? (
                             <Button
                               variant="outline"
@@ -208,17 +224,32 @@ const ProjectsSection = () => {
                               View Published Paper
                             </Button>
                           ) : (
-                            <Button
-                              variant="outline"
-                              className="w-full border-purple-500 text-purple-400 hover:bg-purple-500/10 hover:text-purple-300 transition-all duration-200 transform hover:scale-105"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                window.open(project.link, '_blank');
-                              }}
-                            >
-                              <Github className="mr-2 h-4 w-4" />
-                              View on GitHub
-                            </Button>
+                            <>
+                              <Button
+                                variant="outline"
+                                className="w-full border-purple-500 text-purple-400 hover:bg-purple-500/10 hover:text-purple-300 transition-all duration-200 transform hover:scale-105"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  window.open(project.link, '_blank');
+                                }}
+                              >
+                                <Github className="mr-2 h-4 w-4" />
+                                View on GitHub
+                              </Button>
+                              {project.demo && (
+                                <Button
+                                  variant="outline"
+                                  className="w-full border-green-500 text-green-400 hover:bg-green-500/10 hover:text-green-300 transition-all duration-200 transform hover:scale-105"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    window.open(project.demo, '_blank');
+                                  }}
+                                >
+                                  <ExternalLink className="mr-2 h-4 w-4" />
+                                  Live Demo
+                                </Button>
+                              )}
+                            </>
                           )}
                         </div>
                       </motion.div>
